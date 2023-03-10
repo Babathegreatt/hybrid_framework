@@ -16,3 +16,5 @@ from utilities import read_utils
 test_invalid_login_data = read_utils.get_csv_as_list("../test_data/test_invalid_login_data.csv")
 
 test_add_valid_employee = read_utils.get_sheet_as_list("../test_data/Orange_test_data.xlsx","test_add_valid_employee")
+
+test_invalid_profile_upload = read_utils.get_sheet_as_list("../test_data/Orange_test_data.xlsx","test_invalid_profile_upload")
