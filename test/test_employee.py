@@ -13,7 +13,8 @@ from utilities import data_source
 class TestAddEmployee(WebDriverWrapper):
 
 
-    @pytest.mark.parametrize("username,password,filepath,expected_error",data_source.test_invalid_profile_upload)
+    @pytest.mark.parametrize("username,password,filepath,expected_error",
+                             data_source.test_invalid_profile_upload)
     def test_invalid_profile_upload(self,username,password,filepath,expected_error):
         self.driver.find_element(By.NAME, "username").send_keys(username)
         self.driver.find_element(By.NAME, "password").send_keys(password)
@@ -29,7 +30,8 @@ class TestAddEmployee(WebDriverWrapper):
 
 
 
-    @pytest.mark.parametrize("username,password,firstname,middlename,lastname,expected_profile_header,expected_firstname",data_source.test_add_valid_employee)
+    @pytest.mark.parametrize("username,password,firstname,middlename,lastname,expected_profile_header,expected_firstname",
+                             data_source.test_add_valid_employee)
     def test_add_valid_employee(self,username,password,firstname,middlename,lastname,expected_profile_header,expected_firstname):
         self.driver.find_element(By.NAME, "username").send_keys(username)
         self.driver.find_element(By.NAME, "password").send_keys(password)
@@ -49,7 +51,7 @@ class TestAddEmployee(WebDriverWrapper):
 
        #wait for textbox to contain attribute value as first name
         wait = WebDriverWait(self.driver,30)
-        wait.until(expected_conditions.text_to_be_present_in_element_value((By.NAME, "firstName"),"value",firstname))
+        wait.until(expected_conditions.text_to_be_present_in_element_attribute((By.NAME, "firstName"),"value",firstname))
 
         first_name = self.driver.find_element(By.NAME, "firstName").get_attribute("value")
 
