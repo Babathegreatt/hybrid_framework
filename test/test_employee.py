@@ -23,8 +23,8 @@ class TestAddEmployee(WebDriverWrapper):
         self.driver.find_element(By.NAME, "lastName").send_keys(lastname)
         self.driver.find_element(By.XPATH,"//button[normalize-space()='Save']").click()
         time.sleep(3)
-
-        actual_header=self.driver.find_element(By.XPATH,"//h6[contains(normalize-space(),'John')]").text
+        #Assert actual header and first name
+        actual_header=self.driver.find_element(By.XPATH,f"//h6[contains(normalize-space(),'{firstname}')]").text
         first_name = self.driver.find_element(By.NAME, "firstName").get_attribute("value")
 
         assert_that(expected_profile_header).is_equal_to(actual_header)
